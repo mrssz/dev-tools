@@ -20,6 +20,9 @@ public class SwaggerConvertService {
                     case "String":
                         value = SwaggerConvertUtils.getRandomString();
                         break;
+                    case "Date":
+                        value = SwaggerConvertUtils.getRandomDate();
+                        break;
                     default:
                         value = "example";
                 }

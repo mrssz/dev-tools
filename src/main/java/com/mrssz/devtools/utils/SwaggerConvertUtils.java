@@ -2,6 +2,8 @@ package com.mrssz.devtools.utils;
 
 import com.mrssz.devtools.constant.SwaggerConstant;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Random;
 
 public class SwaggerConvertUtils {
@@ -32,10 +34,17 @@ public class SwaggerConvertUtils {
         return sb.toString();
     }
 
+    public static String getRandomDate() {
+        LocalDateTime localDateTime = LocalDateTime.now();
+        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("YYYY-MM-dd:HH:mm:ss");
+        return localDateTime.format(dateTimeFormatter);
+    }
 
-//    public static void main(String[] args) {
-//        System.out.println(getRandomInteger());
-//        System.out.println(getRandomString());
-//    }
+
+    public static void main(String[] args) {
+        System.out.println(getRandomInteger());
+        System.out.println(getRandomString());
+        System.out.println(getRandomDate());
+    }
 
 }
