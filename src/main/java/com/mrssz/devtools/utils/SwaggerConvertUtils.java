@@ -2,15 +2,10 @@ package com.mrssz.devtools.utils;
 
 import com.mrssz.devtools.constant.SwaggerConstant;
 
-public class SwaggerConvertUtils {
+import java.util.Random;
 
-    public static void main(String[] args) {
-        String s = "    String name;";
-        System.out.println(SwaggerConstant.TAB.concat(SwaggerConvertUtils.stringFormat(SwaggerConstant.SWAGGER,
-                s.split(";")[0].split(" ")[s.split(" ").length-1],
-                s.split(";")[0].split(" ")[s.split(" ").length-1])
-        ));
-    }
+public class SwaggerConvertUtils {
+    static Random r = new Random();
 
     public static String stringFormat(String origin, String... args) {
         StringBuilder result = new StringBuilder(origin);
@@ -22,4 +17,25 @@ public class SwaggerConvertUtils {
         }
         return result.toString();
     }
+
+    public static Integer getRandomInteger() {
+        return r.nextInt(10000);
+    }
+
+    public static String getRandomString() {
+        StringBuilder sb = new StringBuilder();
+        int length = r.nextInt(15);
+        for(int i = 0; i < length; i++){
+            int number=r.nextInt(62);
+            sb.append(SwaggerConstant.STRING_TEMPLATE.charAt(number));
+        }
+        return sb.toString();
+    }
+
+
+//    public static void main(String[] args) {
+//        System.out.println(getRandomInteger());
+//        System.out.println(getRandomString());
+//    }
+
 }
