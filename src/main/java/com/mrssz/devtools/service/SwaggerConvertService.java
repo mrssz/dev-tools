@@ -4,6 +4,8 @@ import com.mrssz.devtools.constant.SwaggerConstant;
 import com.mrssz.devtools.utils.SwaggerConvertUtils;
 import org.springframework.stereotype.Service;
 
+import java.sql.SQLOutput;
+
 
 @Service
 public class SwaggerConvertService {
@@ -11,7 +13,10 @@ public class SwaggerConvertService {
         String[] sources = source.split("\n");
         StringBuilder result = new StringBuilder();
         String value = "";
+        Integer spaceNum = 0;
+        String spaceValue = "";
         for (String s : sources) {
+            spaceValue = "";
             if (s.split(";").length ==2 && s.split(" ").length >= 6 && s.split("/.").length < 2) {
                 switch (s.split(" ")[s.split(" ").length - 2]) {
                     case "Integer":
@@ -26,7 +31,11 @@ public class SwaggerConvertService {
                     default:
                         value = "example";
                 }
-                result.append(SwaggerConstant.TAB.concat(SwaggerConvertUtils.stringFormat(SwaggerConstant.SWAGGER,
+                spaceNum = SwaggerConvertUtils.getSpaceNumber(s);
+                for (int i = 0; i < spaceNum; i = i + 4) {
+                    spaceValue += SwaggerConstant.TAB;
+                }
+                result.append(spaceValue.concat(SwaggerConvertUtils.stringFormat(SwaggerConstant.SWAGGER,
                         s.split(";")[0].split(" ")[s.split(" ").length-1], value)).concat("\n"));
             }
             result.append(s);

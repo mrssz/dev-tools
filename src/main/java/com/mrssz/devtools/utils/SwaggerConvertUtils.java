@@ -40,11 +40,10 @@ public class SwaggerConvertUtils {
         return localDateTime.format(dateTimeFormatter);
     }
 
-
-    public static void main(String[] args) {
-        System.out.println(getRandomInteger());
-        System.out.println(getRandomString());
-        System.out.println(getRandomDate());
+    public static Integer getSpaceNumber(String string) {
+        String temp = (string + "A").trim();
+        return string.length() - (temp.substring(0, (temp.length() - 1)).length());
     }
+
 
 }
