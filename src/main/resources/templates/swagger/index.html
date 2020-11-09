@@ -7,11 +7,13 @@
 </head>
 <body>
 <h3 style="text-align: center">Convert native DTO files to files with swagger annotations.<span class="label label-default">V1</span></h3>
-<div class="container">
+<div class="container" style="width: 80vw;">
     <form action="/swagger/index" method="post">
-        <textarea name="source" class="col-md-6" style="border: #dedef8 2px solid; height: 40vw;" th:text="${source}"></textarea>
-        <textarea name="result" class="col-md-6" style="border: #dedef8 2px solid; height: 40vw;" th:text="${result}"></textarea>
+        <textarea name="source" class="col-lg-6" style="border: #dedef8 2px solid; height: 40vw;" th:text="${source}"></textarea>
+        <textarea name="result" class="col-lg-6" style="border: #dedef8 2px solid; height: 40vw;" th:text="${result}"></textarea>
         <button type="submit" class="btn btn-success">Start conversion</button>
+        <span><input name="camel" type="radio">CamelCase</span>
+        <span><input name="data" type="radio">Data</span>
     </form>
 </div>
 </body>

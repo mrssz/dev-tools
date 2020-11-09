@@ -4,12 +4,10 @@ import com.mrssz.devtools.constant.SwaggerConstant;
 import com.mrssz.devtools.utils.SwaggerConvertUtils;
 import org.springframework.stereotype.Service;
 
-import java.sql.SQLOutput;
-
 
 @Service
 public class SwaggerConvertService {
-    public String addSwagger(String source) {
+    public String addSwagger(String source, boolean camel, boolean data) {
         String[] sources = source.split("\n");
         StringBuilder result = new StringBuilder();
         String value = "";
@@ -34,6 +32,12 @@ public class SwaggerConvertService {
                 spaceNum = SwaggerConvertUtils.getSpaceNumber(s);
                 for (int i = 0; i < spaceNum; i = i + 4) {
                     spaceValue += SwaggerConstant.TAB;
+                }
+                if (camel) {
+                    char[] cs = s.split(";")[0].split(" ")[s.split(" ").length-1].toCharArray();
+                    cs[0] -= 32;
+                    result.append(spaceValue.concat(SwaggerConvertUtils.stringFormat(SwaggerConstant.JSON_PAR,
+                            String.valueOf(cs))).concat("\n"));
                 }
                 result.append(spaceValue.concat(SwaggerConvertUtils.stringFormat(SwaggerConstant.SWAGGER,
                         s.split(";")[0].split(" ")[s.split(" ").length-1], value)).concat("\n"));
