@@ -45,5 +45,4 @@ public class SwaggerConvertUtils {
         return string.length() - (temp.substring(0, (temp.length() - 1)).length());
     }
 
-
 }
