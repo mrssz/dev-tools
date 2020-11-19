@@ -6,7 +6,7 @@
     <link href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-<h3 style="text-align: center">Convert native DTO files to files with swagger annotations.<span class="label label-default">V1</span></h3>
+<h3 style="text-align: center" th:text="${title}"><span class="label label-default">V1</span></h3>
 <div class="container" style="width: 80vw;">
     <form action="/swagger/index" method="post">
         <textarea name="source" class="col-lg-6" style="border: #dedef8 2px solid; height: 40vw;" th:text="${source}"></textarea>
