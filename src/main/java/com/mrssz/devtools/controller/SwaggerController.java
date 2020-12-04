@@ -23,10 +23,11 @@ public class SwaggerController {
     }
 
     @PostMapping("/index")
-    public String swaggerIndexPost(ModelMap model, String source, String result, boolean camel, boolean data) {
+    public String swaggerIndexPost(ModelMap model, String source, String result, boolean camel, boolean data,
+                                   String prefix) {
         model.addAttribute("title", CommonConstant.TITLE_SWAGGER);
         model.addAttribute("source", source);
-        model.addAttribute("result", swaggerService.addSwagger(source, camel, data));
+        model.addAttribute("result", swaggerService.addSwagger(source, camel, data, prefix));
         return "common/index";
     }
 }

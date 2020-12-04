@@ -1,6 +1,8 @@
 package com.mrssz.devtools.utils;
 
 import com.mrssz.devtools.constant.SwaggerConstant;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -43,6 +45,20 @@ public class SwaggerConvertUtils {
     public static Integer getSpaceNumber(String string) {
         String temp = (string + "A").trim();
         return string.length() - (temp.substring(0, (temp.length() - 1)).length());
+  }
+
+    public static String StringAddPrefix(String raw, String prefix) {
+        if (prefix.isEmpty()) {
+            return raw;
+        }
+        String result = "";
+        for (int i = 0; i < raw.length(); i++) {
+            if (raw.charAt(i) != ' ') {
+                result = raw.substring(0, i).concat(prefix).concat(" ").concat(raw.substring(i));
+                break;
+            }
+        }
+        return result;
     }
 
 }

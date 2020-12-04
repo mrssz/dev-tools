@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class SwaggerConvertService {
-    public String addSwagger(String source, boolean camel, boolean data) {
+    public String addSwagger(String source, boolean camel, boolean data, String prefix) {
         String[] sources = source.split("\n");
         StringBuilder result = new StringBuilder();
         String value = "";
@@ -41,6 +41,8 @@ public class SwaggerConvertService {
                 }
                 result.append(spaceValue.concat(SwaggerConvertUtils.stringFormat(SwaggerConstant.SWAGGER,
                         s.split(";")[0].split(" ")[s.split(" ").length-1], value)).concat("\n"));
+
+                s = SwaggerConvertUtils.StringAddPrefix(s, prefix);
             }
             result.append(s);
         }
