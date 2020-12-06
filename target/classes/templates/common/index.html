@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>SwaggerTools</title>
+    <link href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<h3 style="text-align: center" th:text="${title}"><span class="label label-default">V1</span></h3>
+<div class="container" style="width: 80vw;">
+    <form action="/swagger/index" method="post">
+        <textarea name="source" class="col-lg-6" style="border: #dedef8 2px solid; height: 40vw;" th:text="${source}"></textarea>
+        <textarea name="result" class="col-lg-6" style="border: #dedef8 2px solid; height: 40vw;" th:text="${result}"></textarea>
+        <button type="submit" class="btn btn-success">Start conversion</button>
+        <span><input name="camel" type="radio">CamelCase</span>
+        <span><input name="data" type="radio">Data</span>
+        <span><input name="prefix" type="text"></span>
+    </form>
+</div>
+</body>
+<script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</html>
