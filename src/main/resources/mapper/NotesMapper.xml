@@ -4,4 +4,8 @@
     <select id="queryDevtools" resultType="com.mrssz.devtools.entity.NotesEntity">
         SELECT * FROM notes
     </select>
+
+    <insert id="addNote">
+        INSERT INTO notes(title, author, content) VALUES(#{note.title}, #{note.author}, #{note.content})
+    </insert>
 </mapper>

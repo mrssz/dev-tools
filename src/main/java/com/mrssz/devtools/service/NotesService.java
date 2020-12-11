@@ -15,4 +15,8 @@ public class NotesService {
     public List<NotesEntity> getAll(){
         return notesMapper.queryDevtools();
     }
+
+    public void addNote(NotesEntity notesEntity) {
+        notesMapper.addNote(notesEntity);
+    }
 }
