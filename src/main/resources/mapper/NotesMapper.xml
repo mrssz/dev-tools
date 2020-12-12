@@ -8,4 +8,12 @@
     <insert id="addNote">
         INSERT INTO notes(title, author, content) VALUES(#{note.title}, #{note.author}, #{note.content})
     </insert>
+
+    <select id="getNoteById" resultType="com.mrssz.devtools.entity.NotesEntity">
+        SELECT * FROM notes WHERE id=#{id}
+    </select>
+
+    <delete id="deleteNoteById">
+        DELETE FROM notes WHERE id=#{id}
+    </delete>
 </mapper>

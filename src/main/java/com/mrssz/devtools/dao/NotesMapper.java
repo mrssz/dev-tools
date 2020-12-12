@@ -11,4 +11,8 @@ public interface NotesMapper {
     List<NotesEntity> queryDevtools();
 
     void addNote(@Param("note") NotesEntity notesEntity);
+
+    NotesEntity getNoteById(@Param("id") Long id);
+
+    void deleteNoteById(Long id);
 }

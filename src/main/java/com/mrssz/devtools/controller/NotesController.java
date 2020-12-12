@@ -36,4 +36,18 @@ public class NotesController {
         notesService.addNote(notesEntity);
         return "redirect:/note/index";
     }
+
+    @GetMapping("/query")
+    public String getNote(Model model, Long id) {
+        NotesEntity note = notesService.getNoteById(id);
+        model.addAttribute("note", note);
+        return "notes/details";
+    }
+
+    @GetMapping("/delete")
+    public String deleteNote(Long id) {
+        notesService.deleteNoteById(id);
+        return "redirect:/note/index";
+    }
+
 }

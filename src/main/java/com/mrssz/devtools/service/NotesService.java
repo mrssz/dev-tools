@@ -2,6 +2,7 @@ package com.mrssz.devtools.service;
 
 import com.mrssz.devtools.dao.NotesMapper;
 import com.mrssz.devtools.entity.NotesEntity;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,5 +19,13 @@ public class NotesService {
 
     public void addNote(NotesEntity notesEntity) {
         notesMapper.addNote(notesEntity);
+    }
+
+    public NotesEntity getNoteById(Long id) {
+        return notesMapper.getNoteById(id);
+    }
+
+    public void deleteNoteById(Long id) {
+        notesMapper.deleteNoteById(id);
     }
 }
