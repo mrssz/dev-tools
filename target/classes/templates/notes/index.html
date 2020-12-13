@@ -47,7 +47,10 @@
             <td th:text="${note.title}" style="width: 15%"></td>
             <td th:text="${note.author}" style="width: 5%"></td>
             <td th:text="${note.content}" style="width: 70%"></td>
-            <td th:text="${note.title}" style="width: 10%"></td>
+            <td style="width: 10%">
+                <a th:href="@{/note/query?id={id}(id=${note.id})}" class="btn btn-success col-md-5">Look</a>
+                <a th:href="@{/note/delete?id={id}(id=${note.id})}" class="btn btn-success col-md-6">Delete</a>
+            </td>
         </tr>
     </table>
 </div>
