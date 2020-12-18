@@ -1,5 +1,6 @@
 package com.mrssz.devtools.dao;
 
+import com.mrssz.devtools.dto.req.MixNoteQueryDto;
 import com.mrssz.devtools.entity.NotesEntity;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
@@ -14,5 +15,7 @@ public interface NotesMapper {
 
     NotesEntity getNoteById(@Param("id") Long id);
 
-    void deleteNoteById(Long id);
+    void deleteNoteById(@Param("id") Long id);
+
+    List<NotesEntity> mixQuery(@Param("queryDto") MixNoteQueryDto queryDto);
 }

@@ -14,5 +14,5 @@ public class NotesEntity {
     private String title;
     private String author;
     private String content;
-    private Date submission_date;
+    private Date submissionDate;
 }

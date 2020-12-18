@@ -1,6 +1,7 @@
 package com.mrssz.devtools.controller;
 
 import com.mrssz.devtools.constant.CommonConstant;
+import com.mrssz.devtools.dto.req.MixNoteQueryDto;
 import com.mrssz.devtools.entity.NotesEntity;
 import com.mrssz.devtools.service.NotesService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,6 +49,11 @@ public class NotesController {
     public String deleteNote(Long id) {
         notesService.deleteNoteById(id);
         return "redirect:/note/index";
+    }
+
+    @PostMapping("/mixQuery")
+    public List<NotesEntity> mixQuery(MixNoteQueryDto queryDto) {
+        return notesService.mixQuery(queryDto);
     }
 
 }

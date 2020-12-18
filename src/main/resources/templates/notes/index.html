@@ -38,15 +38,19 @@
 <div class="col-md-10 col-md-offset-1">
     <table class="table table-striped table-bordered">
         <tr>
+            <th>ID</th>
             <th>Title</th>
             <th>Author</th>
             <th>Content</th>
+            <th>SubmissionDate</th>
             <th>Operate</th>
         </tr>
         <tr th:each="note:${notes}">
-            <td th:text="${note.title}" style="width: 15%"></td>
+            <td th:text="${note.id}" style="width: 5%"></td>
+            <td th:text="${note.title}" style="width: 10%"></td>
             <td th:text="${note.author}" style="width: 5%"></td>
-            <td th:text="${note.content}" style="width: 70%"></td>
+            <td th:text="${note.content}" style="width: 60%"></td>
+            <td th:text="${note.submissionDate}" style="width: 10%"></td>
             <td style="width: 10%">
                 <a th:href="@{/note/query?id={id}(id=${note.id})}" class="btn btn-success col-md-5">Look</a>
                 <a th:href="@{/note/delete?id={id}(id=${note.id})}" class="btn btn-success col-md-6">Delete</a>

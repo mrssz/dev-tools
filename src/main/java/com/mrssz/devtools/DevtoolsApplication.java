@@ -7,7 +7,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-@EnableZeebeClient
+//@EnableZeebeClient
 @MapperScan("com.mrssz.devtools.dao")
 @ZeebeDeployment(classPathResources = "bpmn/devtools.bpmn")
 public class DevtoolsApplication {
