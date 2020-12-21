@@ -19,7 +19,6 @@ public class NotesApiController {
 
     @PostMapping("/mixQuery")
     public List<NotesEntity> mixQuery(@RequestBody MixNoteQueryDto queryDto) {
-        System.out.println(queryDto);
         return notesService.mixQuery(queryDto);
     }
 }

@@ -13,5 +13,6 @@ public class MixNoteQueryDto {
     private List<Long> idList;
     private List<String> titleList;
     private List<String> authorList;
+    private String content;
 
 }
