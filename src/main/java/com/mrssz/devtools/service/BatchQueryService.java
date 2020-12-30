@@ -8,6 +8,18 @@ import org.springframework.stereotype.Service;
 @Slf4j
 public class BatchQueryService {
 
+    public String generateController(String params, String resultType) {
+        StringBuilder stringBuilder = new StringBuilder();
+        String queryType = getQueryType(params);
+        stringBuilder.append("@PostMapping(\tch").append(queryType).append("\")\n");
+        stringBuilder.append("public List<").append(resultType).append("> mixQuery").append(queryType)
+                .append("(@Requy ").append(queryType).append(" queryDto) {\n");
+        stringBuilder.append(CommonConstant.TAB).append("return demoQueryService.mixQuery(queryDto);\n");
+        stringBuilder.append("}");
+        return stringBuilder.toString();
+    }
+
+
     public String generateDao(String params, String resultType) {
         // List<NotesEntity> mixQuery(@Param("queryDto") MixNoteQueryDto queryDto);
         StringBuilder stringBuilder = new StringBuilder();

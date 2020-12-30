@@ -21,10 +21,10 @@ public class BatchQueryApi {
     }
 
     @PostMapping("/index")
-    public String batchIndexPost(ModelMap model, String source, String result, String tableName) {
+    public String batchIndexPost(ModelMap model, String source, String result, String tableName, String resultType) {
         model.addAttribute("title", CommonConstant.TITLE_BATCH);
         model.addAttribute("source", source);
-        model.addAttribute("controller", source);
+        model.addAttribute("controller", queryService.generateController(source, resultType));
         model.addAttribute("service", source);
         model.addAttribute("dao", queryService.generateDao(source, result));
         model.addAttribute("mapper", queryService.generateMapper(source, result, tableName));
