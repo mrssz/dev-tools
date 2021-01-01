@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>BatchQueryTools</title>
+    <link href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<h3 style="text-align: center" th:text="${title}"><span class="label label-default">V1</span></h3>
+<div class="container" style="width: 80vw;">
+    <form action="/batch/index" method="post">
+        <textarea name="source" class="col-lg-6" style="border: #dedef8 2px solid; height: 45vw;" th:text="${source}"></textarea>
+        <textarea name="controller" class="col-lg-6" style="border: #dedef8 2px solid; height: 8vw;" th:text="${controller}"></textarea>
+        <textarea name="service" class="col-lg-6" style="border: #dedef8 2px solid; height: 8vw;" th:text="${service}"></textarea>
+        <textarea name="dao" class="col-lg-6" style="border: #dedef8 2px solid; height: 4vw;" th:text="${dao}"></textarea>
+        <textarea name="mapper" class="col-lg-6" style="border: #dedef8 2px solid; height: 20vw;" th:text="${mapper}"></textarea>
+        <textarea name="resultType" class="cg-2" style="border: #dedef8 2px solid;" th:text="${resultType}"></textarea>
+        <button type="submit" class="btn btn-success">Start conversion</button>
+    </form>
+</div>
+</body>
+<script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</html>

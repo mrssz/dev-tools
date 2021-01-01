@@ -10,3 +10,6 @@ mybatis:
   type-aliases-package: com.sz.devtools.entity
   configuration:
     map-underscore-to-camel-case: true
+
+swagger2:
+  enable: true

@@ -11,10 +11,20 @@ public class BatchQueryService {
     public String generateController(String params, String resultType) {
         StringBuilder stringBuilder = new StringBuilder();
         String queryType = getQueryType(params);
-        stringBuilder.append("@PostMapping(\tch").append(queryType).append("\")\n");
-        stringBuilder.append("public List<").append(resultType).append("> mixQuery").append(queryType)
-                .append("(@Requy ").append(queryType).append(" queryDto) {\n");
+        stringBuilder.append("@PostMapping(\"").append(queryType).append("\")\n");
+        stringBuilder.append("public List<").append(gResultType(resultType)).append("> mixQuery").append(queryType)
+                .append("(@RequestBody ").append(queryType).append(" queryDto) {\n");
         stringBuilder.append(CommonConstant.TAB).append("return demoQueryService.mixQuery(queryDto);\n");
+        stringBuilder.append("}");
+        return stringBuilder.toString();
+    }
+
+    public String generateService(String params, String resultType) {
+        StringBuilder stringBuilder = new StringBuilder();
+        String queryType = getQueryType(params);
+        stringBuilder.append("public List<").append(getResultType(resultType)).append("> mixQuery").append(queryType)
+                .append(queryType).append(" queryDto) {\n");
+        stringBuilder.append(CommonConstant.TAB).append("return demoQueryMapper.mixQuery(queryDto);\n");
         stringBuilder.append("}");
         return stringBuilder.toString();
     }
@@ -24,20 +34,9 @@ public class BatchQueryService {
         // List<NotesEntity> mixQuery(@Param("queryDto") MixNoteQueryDto queryDto);
         StringBuilder stringBuilder = new StringBuilder();
         String dtoType = getQueryType(params);
-        stringBuilder.append("List<").append(resultType).append("> mixQuery(@Param(\"queryDto\") ").append(dtoType)
+        stringBuilder.append("List<").append(getResultType(resultType)).append("> mixQuery(@Param(\"queryDto\") ").append(dtoType)
                 .append(" queryDto);");
         return stringBuilder.toString();
-    }
-
-    public String getQueryType(String params) {
-        String[] paramlines = params.split("\n");
-        String dtoType = "";
-        for (String line : paramlines) {
-            if (line.contains("class")) {
-                dtoType = line.split(" ")[line.split(" ").length-2];
-            }
-        }
-        return dtoType;
     }
 
     public String generateMapper(String params, String resultType, String tableName) {
@@ -46,7 +45,7 @@ public class BatchQueryService {
 
         StringBuilder stringBuilder= new StringBuilder();
         // Init
-        stringBuilder.append("<select id=\"mixQuery\" resultType=\"com.example.entity.").append(resultType).append("\">\n");
+        stringBuilder.append("<select id=\"mixQuery\" resultType=\"com.example.entity.").append(getResultType(resultType)).append("\">\n");
         stringBuilder.append(CommonConstant.TAB).append("SELECT * FROM ").append(tableName).append(" WHERE id > 0\n");
 
         for (String line : paramlines) {
@@ -74,11 +73,23 @@ public class BatchQueryService {
                 continue;
             }
         }
-
-        // End
         stringBuilder.append("</select>");
-
         return stringBuilder.toString();
+    }
+
+    public String getQueryType(String params) {
+        String[] paramlines = params.split("\n");
+        String dtoType = "";
+        for (String line : paramlines) {
+            if (line.contains("class")) {
+                dtoType = line.split(" ")[line.split(" ").length-2];
+            }
+        }
+        return dtoType;
+    }
+
+    public String getResultType(String params) {
+        return params.isEmpty() ? "ResultType" : params;
     }
 
 }

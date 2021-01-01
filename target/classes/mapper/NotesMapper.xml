@@ -16,4 +16,24 @@
     <delete id="deleteNoteById">
         DELETE FROM notes WHERE id=#{id}
     </delete>
+
+    <select id="mixQuery" resultType="com.mrssz.devtools.entity.NotesEntity">
+        SELECT *
+        FROM
+        notes
+        WHERE
+        id > 0
+        <if test="queryDto.titleList != null">
+            AND title IN
+            <foreach collection="queryDto.titleList" item="title" open="(" close=")" separator=",">
+                #{title}
+            </foreach>
+        </if>
+        <if test="queryDto.authorList != null">
+            AND title IN
+            <foreach collection="queryDto.authorList" item="author" open="(" close=")" separator=",">
+                #{author}
+            </foreach>
+        </if>
+    </select>
 </mapper>
