@@ -12,7 +12,7 @@ public class BatchQueryService {
         StringBuilder stringBuilder = new StringBuilder();
         String queryType = getQueryType(params);
         stringBuilder.append("@PostMapping(\"").append(queryType).append("\")\n");
-        stringBuilder.append("public List<").append(gResultType(resultType)).append("> mixQuery").append(queryType)
+        stringBuilder.append("public List<").append(getResultType(resultType)).append("> mixQuery").append(queryType)
                 .append("(@RequestBody ").append(queryType).append(" queryDto) {\n");
         stringBuilder.append(CommonConstant.TAB).append("return demoQueryService.mixQuery(queryDto);\n");
         stringBuilder.append("}");
